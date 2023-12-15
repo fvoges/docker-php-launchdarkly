@@ -1,0 +1,6 @@
+config.php
+.htpasswd
+.htaccess
+vendor
+.env
+data

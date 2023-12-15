@@ -1,0 +1,42 @@
+<html>
+<head>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Launch Darkly Test</title>
+</head>
+<body>
+  <h1>Launch Darkly Test</h1>
+
+<div class="wrapper">
+
+<p>This page demonstrates basic usage of LaunchDarkly flags.</p>
+
+{% if targeted_content_enabled and uname is not null and uname is not empty  %}
+  <div>
+    <p>Hello {{ uname }}! This content is just for you.</p>
+  </div>
+{% endif %}
+
+  <div>
+    <form method="post">
+    <p>
+      <label for="uname">Please enter your user name</label> <input type="text" name="uname" value="{{ uname }}">
+      <input type="submit" value="Submit"
+    </p>
+    </form>
+  </div>
+
+{% if extra_content_enabled %}
+  <div>
+  <p class="box">
+    {{ extra_content }}
+  </p>
+  </div>
+{% endif %}
+</div>
+
+{% if uname is not null and uname is not empty  %}
+<p>Loged in as: {{ uname}}</p>
+{% endif %}
+</body>
+</html>
