@@ -1,0 +1,30 @@
+name: Build and Push branch image on Push or Pull Request
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  build-and-publish-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+        - uses: actions/checkout@v2
+
+        - name: Get repository name
+          id: repo-name
+          uses: MariachiBear/get-repo-name-action@v1.1.0
+
+        - name: Extract branch name
+          shell: bash
+          run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+          id: extract_branch
+
+        - name: Build and Publish Tag Docker image
+          uses: VaultVulp/gp-docker-action@1.6.0
+          with:
+              github-token: ${{ secrets.GITHUB_TOKEN }}
+              image-name: ${{ steps.repo-name.outputs.repository-name }}
+              image-tag: ${{ steps.extract_branch.outputs.branch }}
