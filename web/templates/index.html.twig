@@ -2,6 +2,12 @@
 <head>
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="styles.css">
+{% if new_login_enabled %}
+{% set login_button_label = 'Login' %}
+  <link rel="stylesheet" href="button_styles.css">
+{% else %}
+{% set login_button_label = 'Submit' %}
+{% endif %}
   <title>Launch Darkly Test</title>
 </head>
 <body>
@@ -20,8 +26,9 @@
   <div>
     <form method="post">
     <p>
-      <label for="uname">Please enter your user name</label> <input type="text" name="uname" value="{{ uname }}">
-      <input type="submit" value="Submit"
+      <label for="uname">Please enter your user name</label> 
+      <input type="text" name="uname" value="{{ uname }}">
+      <input type="submit" value="{{ login_button_label }}"
     </p>
     </form>
   </div>
