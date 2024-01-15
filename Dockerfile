@@ -1,4 +1,8 @@
 FROM composer:latest as vendor
+LABEL org.opencontainers.image.authors="fvoges@gmail.com"
+LABEL org.opencontainers.image.title="docker-php-launchdarkly"
+LABEL org.opencontainers.image.url="https://github.com/fvoges/docker-php-launchdarkly"
+LABEL org.opencontainers.image.description="Simple single-page PHP Docker application to demonstrate Launch Darkly"
 
 WORKDIR /app
 
