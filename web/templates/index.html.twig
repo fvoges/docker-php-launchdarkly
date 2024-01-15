@@ -2,12 +2,7 @@
 <head>
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="styles.css">
-{% if new_login_enabled %}
-{% set login_button_label = 'Login' %}
-  <link rel="stylesheet" href="button_styles.css">
-{% else %}
 {% set login_button_label = 'Submit' %}
-{% endif %}
   <title>Launch Darkly Test</title>
 </head>
 <body>
